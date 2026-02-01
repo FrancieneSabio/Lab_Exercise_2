@@ -1,0 +1,111 @@
+<div class="page">
+
+
+  <nav>
+    <span class="logo" (click)="goTo('home')">My Angular Wine </span>
+    <div class="nav-links">
+      <button [class.active]="currentPage === 'home'" (click)="goTo('home')">Home</button>
+      <button [class.active]="currentPage === 'products'" (click)="goTo('products')">Products</button>
+      <button [class.active]="currentPage === 'contact'" (click)="goTo('contact')">Contact</button>
+      <button [class.active]="currentPage === 'cart'" (click)="goTo('cart')">🛒 Cart ({{ getTotalItems() }})</button>
+    </div>
+  </nav>
+
+
+  <div *ngIf="currentPage === 'home'" class="home-page">
+    <div class="hero">
+      <h1><span class="gold">VINO</span></h1>
+      <p>Discover the finest wines from around the world.</p>
+      <button class="btn" (click)="goTo('products')">Shop Now</button>
+    </div>
+    <div class="features">
+      <div class="feature-card">
+        <h3>World Selection</h3>
+        <p>Wines from the best regions across the globe.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Premium Quality</h3>
+        <p>Only the finest and most award-winning wines.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Free Shipping</h3>
+        <p>Free shipping on all orders over $200.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="currentPage === 'products'" class="products-page">
+    <h2 class="page-title">Our <span class="gold">Collection</span></h2>
+    <div class="grid">
+      <div class="card" *ngFor="let w of wines">
+        <span class="card-emoji">🍷</span>
+        <div class="card-name">{{ w.name }}</div>
+        <div class="card-region">📍 {{ w.region }}</div>
+        <div class="card-vintage">📅 Vintage: {{ w.vintage }}</div>
+        <div class="card-desc">{{ w.description }}</div>
+        <div class="card-price">₱{{ w.price }}</div>
+        <button class="btn" (click)="addToCart(w)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="currentPage === 'contact'" class="contact-page">
+    <h2 class="page-title">Contact <span class="gold">Us</span></h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>Location: 123 Wine Street, Bordeaux, France</p>
+        <p>Ring us: +1 (555) 123-4567</p>
+        <p>Email? hello@vino.com</p>
+        <p>Open: Mon - Fri: 9AM - 6PM</p>
+      </div>
+      <div class="contact-form">
+        <input type="text" placeholder="Your Name" class="input" />
+        <input type="email" placeholder="Your Email" class="input" />
+        <textarea placeholder="Your Message" class="input textarea"></textarea>
+        <button class="btn">Send Message</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="currentPage === 'cart'" class="cart-page">
+    <h2 class="page-title">Your <span class="gold">Cart</span></h2>
+
+  
+    <div *ngIf="cart.length > 0" class="cart-container">
+      <div class="cart-item" *ngFor="let item of cart">
+        <span class="cart-emoji">🍷</span>
+        <div class="cart-item-info">
+          <div class="cart-item-name">{{ item.name }}</div>
+          <div class="cart-item-region">{{ item.region }}</div>
+        </div>
+        <div class="qty-controls">
+          <button class="qty-btn" (click)="decreaseQty(item)">−</button>
+          <span class="qty-number">{{ item.qty }}</span>
+          <button class="qty-btn" (click)="increaseQty(item)">+</button>
+        </div>
+        <div class="cart-item-price">${{ item.price * item.qty }}</div>
+        <button class="remove-btn" (click)="removeFromCart(item)">🗑</button>
+      </div>
+
+      <div class="cart-total">
+        <span>Total:</span>
+        <span class="gold">₱{{ getTotal() }}</span>
+      </div>
+      <button class="btn checkout-btn" (click)="checkout()">Checkout</button>
+    </div>
+
+    <div *ngIf="cart.length === 0" class="empty-cart">
+      <p>Your cart is empty.</p>
+      <button class="btn" (click)="goTo('products')">Go to Products</button>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2025 Vino</span>
+  </footer>
+
+</div>
