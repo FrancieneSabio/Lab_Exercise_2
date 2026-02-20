@@ -1,0 +1,117 @@
+.products-page {
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.gold {
+  color: #c9a84c;
+}
+
+.cart-summary {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.card {
+  background: #2a1500;
+  border: 1px solid #c9a84c33;
+  border-radius: 12px;
+  padding: 24px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #c9a84c;
+}
+
+.card-emoji {
+  font-size: 2.5rem;
+}
+
+.card-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 10px 0 4px;
+  color: #f5f0e8;
+}
+
+.card-region {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.card-vintage {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: #ccc;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.card-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c9a84c;
+  margin-bottom: 8px;
+}
+
+.available {
+  color: lightgreen;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.out-of-stock {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.btn {
+  background-color: #c9a84c;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.btn:hover:not(:disabled) {
+  background-color: #a8873a;
+}
+
+.btn:disabled {
+  background-color: #444;
+  color: #888;
+  cursor: not-allowed;
+}

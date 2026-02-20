@@ -1,0 +1,22 @@
+<div class="products-page">
+  <h2 class="page-title">Our <span class="gold">Collection</span></h2>
+  <p>🛒 Cart Items: {{ getTotalItems() }} &nbsp;|&nbsp; Total: ₱{{ getTotal() }}</p>
+
+  <div class="grid">
+    <div class="card" *ngFor="let w of wines">
+      <span class="card-emoji">🍷</span>
+      <div class="card-name">{{ w.name }}</div>
+      <div class="card-region">📍 {{ w.region }}</div>
+      <div class="card-vintage">📅 Vintage: {{ w.vintage }}</div>
+      <div class="card-desc">{{ w.description }}</div>
+      <div class="card-price">₱{{ w.price }}</div>
+
+      <p *ngIf="w.available; else outStock" class="available">✅ Available</p>
+      <ng-template #outStock>
+        <p class="out-of-stock">❌ Out of Stock</p>
+      </ng-template>
+
+      <button class="btn" (click)="addToCart(w)" [disabled]="!w.available">Add to Cart</button>
+    </div>
+  </div>
+</div>

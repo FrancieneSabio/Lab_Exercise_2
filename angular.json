@@ -1,10 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "cli": {
-    "packageManager": "npm",
-    "analytics": false
-  },
   "newProjectRoot": "projects",
   "projects": {
     "my-first-angular-shop": {
@@ -17,22 +13,15 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/my-first-angular-shop",
+            "index": "src/index.html",
             "browser": "src/main.ts",
+            "polyfills": [],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": [],
+            "ssr": false
           },
           "configurations": {
             "production": {
@@ -75,5 +64,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "21650fcf-df08-475b-a4a0-1fbf10cc9b55"
   }
 }
